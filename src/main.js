@@ -10,6 +10,7 @@ import renderContact from './contact.js';
 import renderTestimonials from './testimonials.js';
 import renderFooter from './footer.js';
 import renderChatbot from './chatbox.js';
+import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderChatbot();
