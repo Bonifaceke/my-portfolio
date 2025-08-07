@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Boniface Mugo - Cybersecurity Specialist · Ethical Hacker · Developer" />
+    <title>Boniface Mugo - Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="icon" href="/src/icons/favicon.svg" type="image/svg+xml" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -10;
+        pointer-events: none;
+      }
+    </style>
+
+
+  <!-- Essential SEO & Accessibility Meta Tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boniface Mugo | Cybersecurity & Full-Stack Portfolio</title>
+<meta name="description" content="Boniface Mugo – Cybersecurity specialist, developer, and visionary leader. Explore skills, projects, testimonials, and more.">
+<meta name="keywords" content="Boniface Mugo, Cybersecurity, Web Developer, Bug Bounty, Software Engineer, Portfolio, Kenya, Full-Stack">
+<meta name="author" content="Boniface Mugo">
+<link rel="canonical" href="https://your-portfolio-url.com">
+
+<!-- Open Graph (for Social Media Previews) -->
+<meta property="og:title" content="Boniface Mugo | Cybersecurity & Full-Stack Portfolio">
+<meta property="og:description" content="Explore Boniface's work in tech, including web dev, cybersecurity, and personal projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-portfolio-url.com">
+<meta property="og:image" content="https://your-portfolio-url.com/images/og-banner.jpg"> <!-- Replace with your image URL -->
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Boniface Mugo | Cybersecurity & Full-Stack Portfolio">
+<meta name="twitter:description" content="Explore Boniface's work in tech, including web dev, cybersecurity, and personal projects.">
+<meta name="twitter:image" content="https://your-portfolio-url.com/images/og-banner.jpg"> <!-- Replace -->
+
+
+
+  </head>
+
+  <body class="bg-white text-gray-900 flex flex-col min-h-screen">
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Main App Container -->
+    <div id="app" class="flex-grow"></div>
+
+    <!-- JS Scripts -->
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/about.js"></script>
+
+    <!-- Particle Background Script -->
+    <script>
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particlesArray;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor(x, y, dx, dy, size, color) {
+          this.x = x;
+          this.y = y;
+          this.dx = dx;
+          this.dy = dy;
+          this.size = size;
+          this.color = color;
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+
+        update() {
+          if (this.x + this.size > canvas.width || this.x - this.size < 0) this.dx *= -1;
+          if (this.y + this.size > canvas.height || this.y - this.size < 0) this.dy *= -1;
+          this.x += this.dx;
+          this.y += this.dy;
+          this.draw();
+        }
+      }
+
+      function initParticles() {
+        particlesArray = [];
+        for (let i = 0; i < 40; i++) {
+          const size = Math.random() * 2 + 1;
+          const x = Math.random() * (canvas.width - size * 2);
+          const y = Math.random() * (canvas.height - size * 2);
+          const dx = (Math.random() - 0.5) * 0.02;
+          const dy = (Math.random() - 0.5) * 0.02;
+          const color = '#999999';
+          particlesArray.push(new Particle(x, y, dx, dy, size, color));
+        }
+      }
+
+      function animateParticles() {
+        requestAnimationFrame(animateParticles);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particlesArray.forEach(p => p.update());
+      }
+
+      resizeCanvas();
+      animateParticles();
+    </script>
+
+    <!-- Back to Top Button -->
+<button id="backToTop" aria-label="Scroll to top" title="Back to Top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5" />
+    <polyline points="5 12 12 5 19 12" />
+  </svg>
+</button>
+
+
+
+
+
+<!-- No button manually added here -->
+<script type="module" src="./src/"></script>
+
+<script>
+  // Force scroll to top ASAP
+  window.scrollTo(0, 0);
+
+  // And again after load, just in case
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
+  });
+</script>
+
+
+
+
+<form name="contact" netlify hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="subject" />
+  <textarea name="message"></textarea>
+</form>
+
+<form name="newsletter" netlify hidden>
+  <input type="email" name="email" />
+</form>
+
+
+</body>
+
+
+
+  
+</html>
